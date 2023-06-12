@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
 import {
   DateType,
   type DateValueType,
 } from "react-tailwindcss-datepicker/dist/types";
 import { twMerge } from "tailwind-merge";
-import styles from "./styles";
+import { fadeInStyles } from "../styles/fadeIn";
 
 interface Props {
   disabledDates?: Date[];
@@ -39,18 +39,6 @@ export const AppDatePicker = ({ disabledDates }: Props) => {
     }));
   }, [disabledDates]);
 
-  useEffect(() => {
-    const allInputHTMLElements = document.querySelectorAll("input");
-
-    if (allInputHTMLElements.length <= 0) return;
-
-    allInputHTMLElements.forEach((inputHTMLElement, i) => {
-      // if not last element, don't set autofocus to true
-      if (i !== allInputHTMLElements.length - 1) return;
-      inputHTMLElement.focus();
-    });
-  }, []);
-
   return (
     <Datepicker
       useRange={false}
@@ -60,8 +48,8 @@ export const AppDatePicker = ({ disabledDates }: Props) => {
       placeholder="Book a date"
       separator="/"
       displayFormat={"DD/MM/YYYY"}
-      inputClassName={twMerge(styles)}
-      containerClassName="rounded-lg relative"
+      inputClassName={twMerge(fadeInStyles, "w-full bg-slate-900 rounded-lg")}
+      containerClassName="rounded-lg relative animate-in fade-in duration-1000"
       disabledDates={internalDisabledDates}
     />
   );
