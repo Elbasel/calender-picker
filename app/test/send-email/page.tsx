@@ -1,10 +1,9 @@
 // import { SendEmailForm } from "@/app/ui/SendEmailForm";
 
-interface Props {}
-
-export const TestSendEmailPage = ({}: Props) => {
+export const TestSendEmailPage = () => {
   return (
     <>
+      <h1>Currently Disabled</h1>
       {/* <SendEmailForm /> */}
     </>
   );
