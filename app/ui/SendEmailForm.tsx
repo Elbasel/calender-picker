@@ -44,5 +44,3 @@ export const SendEmailForm = () => {
     </form>
   );
 };
-
-export default SendEmailForm;
