@@ -1,6 +1,6 @@
 // import { SendEmailForm } from "@/app/ui/SendEmailForm";
 
-export const TestSendEmailPage = () => {
+const TestSendEmailPage = () => {
   return (
     <>
       <h1>Currently Disabled</h1>
