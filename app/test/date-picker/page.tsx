@@ -1,4 +1,4 @@
-import { DatePicker } from "@/app/ui/DatePicker";
+import { DatePicker } from "@/app/ui/DatePicker/DatePicker";
 
 const DatePickerTestPage = () => {
   return (
