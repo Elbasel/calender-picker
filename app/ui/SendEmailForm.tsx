@@ -1,26 +1,26 @@
 "use client";
 
-// import { useTransition } from "react";
+import { useTransition } from "react";
 import { buttonStyles } from "../styles/button";
 import { EmailInput } from "../user/ui/EmailInput";
 import { inputStyles } from "../styles/input";
-// import { sendEmail } from "../actions/sendEmail";
+import { sendEmail } from "../actions/sendEmail";
 
 export const SendEmailForm = () => {
-  // const [isPending, startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const startSendingEmail = (formData: FormData) => {
-    // const to = formData.get("to")?.toString();
-    // const subject = formData.get("subject")?.toString();
-    // const text = formData.get("text")?.toString();
-    // if (!to || !subject || !text) return;
-    // startTransition(() => {
-    //   sendEmail({
-    //     to,
-    //     subject,
-    //     text,
-    //   });
-    // });
+    const to = formData.get("to")?.toString();
+    const subject = formData.get("subject")?.toString();
+    const text = formData.get("text")?.toString();
+    if (!to || !subject || !text) return;
+    startTransition(() => {
+      sendEmail({
+        to,
+        subject,
+        text,
+      });
+    });
   };
 
   return (
@@ -38,9 +38,8 @@ export const SendEmailForm = () => {
         placeholder="Text"
         className={inputStyles}
       />
-      <button disabled={true} type="submit" className={buttonStyles}>
-        {/* {isPending ? "Sending..." : "Send"} */}
-        Currently Disabled
+      <button disabled={isPending} type="submit" className={buttonStyles}>
+        {isPending ? "Sending..." : "Send"}
       </button>
     </form>
   );
