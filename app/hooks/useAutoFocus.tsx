@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 
 export const UseAutoFocus = (enabled = true) => {
-
   useEffect(() => {
     if (!enabled) return;
     const allInputHTMLElements = document.querySelectorAll("input");
@@ -14,7 +13,5 @@ export const UseAutoFocus = (enabled = true) => {
       if (i !== allInputHTMLElements.length - 1) return;
       inputHTMLElement.focus();
     });
-  }, []);
-
-  return true;
+  }, [enabled]);
 };
