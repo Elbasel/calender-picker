@@ -11,8 +11,9 @@ import { fadeInStyles } from "../styles/fadeIn";
 
 interface Props {
   disabledDates?: Date[];
+  name?: string;
 }
-export const AppDatePicker = ({ disabledDates }: Props) => {
+export const AppDatePicker = ({ disabledDates, name = "date" }: Props) => {
   const [value, setValue] = useState<DateValueType>(null);
 
   const handleValueChange = (value: DateValueType) => {
@@ -41,6 +42,7 @@ export const AppDatePicker = ({ disabledDates }: Props) => {
 
   return (
     <Datepicker
+      inputName={name}
       useRange={false}
       value={value}
       asSingle

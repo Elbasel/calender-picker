@@ -1,18 +1,19 @@
-"use client";
+// "use client";
 
 import { AppDatePicker } from "./ui/DatePicker";
 import { inputStyles } from "./styles/input";
 
-export default async function Home() {
+const HomePage = async () => {
   return (
-    <div className="flex flex-col gap-8">
-      <AppDatePicker />
+    <form className="flex flex-col gap-8 px-80">
+      <AppDatePicker name="date" />
       <input
         type="text"
-        name="Name"
+        name="name"
         placeholder="What should I call you?"
         className={inputStyles}
       />
-    </div>
+    </form>
   );
-}
+};
+export default HomePage;
