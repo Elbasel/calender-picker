@@ -1,58 +1,53 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import { useState } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
 import {
-  DateType,
+  type DateRangeType,
+  type DateType,
   type DateValueType,
 } from "react-tailwindcss-datepicker/dist/types";
 import { twMerge } from "tailwind-merge";
 import { fadeInStyles } from "../styles/fadeIn";
 
 interface Props {
-  disabledDates?: Date[];
+  disabledDates?: DateType[];
   name?: string;
+  onChange?: (date: DateType) => void;
 }
-export const AppDatePicker = ({ disabledDates, name = "date" }: Props) => {
-  const [value, setValue] = useState<DateValueType>(null);
-
-  const handleValueChange = (value: DateValueType) => {
-    const startDate: DateType | undefined = value?.startDate;
-    const endDate: DateType | undefined = value?.endDate;
-
-    // ! Always expects a startDate
-    if (!startDate) return;
-    // ! `starDate` is always going to be equal to `endDate`
-    // ! since the `asSingle` prop is set to true below
-    if (startDate !== endDate)
-      throw new Error("startDate and endDate are not equal!");
-
-    setValue(value);
-    if (process.env.NODE_ENV === "development") console.log("value", value);
-  };
-
-  // Convert from `Date[]` to `DateType[] as required by `react-tailwindcss-datepicker`
-  const internalDisabledDates = useMemo(() => {
-    if (!disabledDates) return undefined;
-    return disabledDates.map((date) => ({
-      startDate: date,
-      endDate: date,
-    }));
-  }, [disabledDates]);
+export const AppDatePicker = ({
+  disabledDates,
+  name = "date",
+  onChange,
+}: Props) => {
+  const [date, setDate] = useState<DateType | null>(null);
 
   return (
     <Datepicker
+      value={{
+        startDate: date,
+        endDate: date,
+      }}
+      onChange={(newDate: DateValueType) => {
+        const { startDate } = newDate as DateRangeType;
+        setDate(startDate);
+        onChange?.(startDate);
+      }}
+      disabledDates={disabledDates?.map((date) => ({
+        startDate: date,
+        endDate: date,
+      }))}
+      asSingle
       inputName={name}
       useRange={false}
-      value={value}
-      asSingle
-      onChange={handleValueChange}
       placeholder="Book a date"
       separator="/"
       displayFormat={"DD/MM/YYYY"}
-      inputClassName={twMerge(fadeInStyles, "w-full bg-slate-900 rounded-lg")}
-      containerClassName="rounded-lg relative animate-in fade-in duration-1000"
-      disabledDates={internalDisabledDates}
+      inputClassName={twMerge(
+        fadeInStyles,
+        "text-xl w-full bg-slate-900 rounded-lg"
+      )}
+      containerClassName=" max-w-[297px] mx-auto rounded-lg relative animate-in fade-in duration-1000 child-div-full"
     />
   );
 };

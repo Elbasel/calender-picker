@@ -6,7 +6,7 @@ export const inputStyles = [
   "focus:border-transparent",
   "text-white",
   "border-white",
-  "bg-black",
+  "bg-slate-900",
   "ring-blue-400",
   "transition",
   "ease",
@@ -15,4 +15,5 @@ export const inputStyles = [
   "px-4",
   "py-2",
   "font-normal",
+  "text-xl",
 ].join(" ");

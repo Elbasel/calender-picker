@@ -11,3 +11,7 @@
 .h-12 {
   height: 2rem !important;
 }
+
+.child-div-full > div {
+  width: 100%;
+}
