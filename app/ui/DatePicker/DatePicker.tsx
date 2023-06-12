@@ -2,24 +2,35 @@
 
 import React, { useMemo, useState } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
-import { type DateValueType } from "react-tailwindcss-datepicker/dist/types";
+import {
+  DateType,
+  type DateValueType,
+} from "react-tailwindcss-datepicker/dist/types";
 import { twMerge } from "tailwind-merge";
 import styles from "./styles";
 
 interface Props {
   disabledDates?: Date[];
 }
-export const DatePicker = ({ disabledDates }: Props) => {
+export const AppDatePicker = ({ disabledDates }: Props) => {
   const [value, setValue] = useState<DateValueType>(null);
 
   const handleValueChange = (value: DateValueType) => {
-    const startDate = value?.startDate;
-    const endDate = value?.endDate;
+    const startDate: DateType | undefined = value?.startDate;
+    const endDate: DateType | undefined = value?.endDate;
 
-    // ensure valid date state
-    if (startDate && endDate) setValue({ startDate, endDate });
+    // ! Always expects a startDate
+    if (!startDate) return;
+    // ! `starDate` is always going to be equal to `endDate`
+    // ! since the `asSingle` prop is set to true below
+    if (startDate !== endDate)
+      throw new Error("startDate and endDate are not equal!");
+
+    setValue(value);
+    if (process.env.NODE_ENV === "development") console.log("value", value);
   };
 
+  // Convert from `Date[]` to `DateType[] as required by `react-tailwindcss-datepicker`
   const internalDisabledDates = useMemo(() => {
     if (!disabledDates) return undefined;
     return disabledDates.map((date) => ({
