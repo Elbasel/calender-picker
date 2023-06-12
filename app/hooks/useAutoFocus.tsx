@@ -3,9 +3,9 @@
 import { useEffect } from "react";
 
 export const UseAutoFocus = (enabled = true) => {
-  if (!enabled) return;
 
   useEffect(() => {
+    if (!enabled) return;
     const allInputHTMLElements = document.querySelectorAll("input");
     if (allInputHTMLElements.length <= 0) return;
 
