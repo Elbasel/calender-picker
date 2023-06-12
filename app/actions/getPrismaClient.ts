@@ -3,6 +3,8 @@
 import { PrismaClient } from "@prisma/client";
 
 export const getPrismaClient = () => {
-  const prisma = new PrismaClient();
-  return prisma;
+  const prismaClient = new PrismaClient();
+  // This creates a colsure that returns the same instance of the PrismaClient
+  // instead of creating a new instance every time.
+  return (() => prismaClient)();
 };

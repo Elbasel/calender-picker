@@ -1,5 +1,5 @@
-import { AppDatePicker } from "./ui/DatePicker/DatePicker";
-import { inputStyles } from "./ui/styles/input";
+import { AppDatePicker } from "./ui/DatePicker";
+import { inputStyles } from "./styles/input";
 
 export default async function Home() {
   return (

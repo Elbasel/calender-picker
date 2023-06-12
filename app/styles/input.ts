@@ -1,0 +1,18 @@
+export const inputStyles = [
+  "w-full",
+  "border-2",
+  "focus:ring-4 ",
+  "focus:outline-none",
+  "focus:border-transparent",
+  "text-white",
+  "border-white",
+  "bg-black",
+  "ring-blue-400",
+  "transition",
+  "ease",
+  "duration-300",
+  "rounded-lg",
+  "px-4",
+  "py-2",
+  "font-normal",
+].join(" ");

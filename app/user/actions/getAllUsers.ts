@@ -1,6 +1,6 @@
 "use server";
 
-import { getPrismaClient } from "./getPrismaClient";
+import { getPrismaClient } from "@/app/actions";
 
 export const getAllUsers = async () => {
   const prismaClient = getPrismaClient();

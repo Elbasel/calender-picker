@@ -1,3 +1,3 @@
-export default async function Cart(): Promise<JSX.Element> {
+export const Cart = async (): Promise<JSX.Element> => {
   return <></>;
-}
+};

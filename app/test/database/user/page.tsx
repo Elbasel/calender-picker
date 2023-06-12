@@ -1,17 +1,16 @@
-import { getAllUsers } from "@/app/actions";
+import { getAllUsers } from "@/app/user/actions";
+import { CreateUserForm, UserList } from "@/app/user/ui";
 
 const TestUserPage = async () => {
   const allUsers = await getAllUsers();
 
   return (
-    <>
-      <h2>Users:</h2>
-      <ul>
-        {allUsers.map((user) => (
-          <li>{user.name}</li>
-        ))}
-      </ul>
-    </>
+    <div className="space-y-4">
+      <h2>Create User:</h2>
+      <CreateUserForm allUsers={allUsers} />
+      <h2>All Users:</h2>
+      <UserList users={allUsers} />
+    </div>
   );
 };
 
