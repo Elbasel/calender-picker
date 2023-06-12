@@ -1,3 +1,5 @@
+"use client";
+
 import { AppDatePicker } from "./ui/DatePicker";
 import { inputStyles } from "./styles/input";
 
@@ -8,7 +10,7 @@ export default async function Home() {
       <input
         type="text"
         name="Name"
-        aria-label="Enter your name"
+        placeholder="What should I call you?"
         className={inputStyles}
       />
     </div>
