@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
 import {
   DateType,
@@ -38,6 +38,18 @@ export const AppDatePicker = ({ disabledDates }: Props) => {
       endDate: date,
     }));
   }, [disabledDates]);
+
+  useEffect(() => {
+    const allInputHTMLElements = document.querySelectorAll("input");
+
+    if (allInputHTMLElements.length <= 0) return;
+
+    allInputHTMLElements.forEach((inputHTMLElement, i) => {
+      // if not last element, don't set autofocus to true
+      if (i !== allInputHTMLElements.length - 1) return;
+      inputHTMLElement.focus();
+    });
+  }, []);
 
   return (
     <Datepicker
