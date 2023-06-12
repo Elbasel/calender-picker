@@ -2,7 +2,7 @@
 
 import { useTransition } from "react";
 import { buttonStyles } from "../styles/button";
-import { EmailInput } from "../user/ui/EmailInput";
+import { EmailInput } from "./EmailInput";
 import { inputStyles } from "../styles/input";
 import { sendEmail } from "../actions/sendEmail";
 

@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useTransition } from "react";
 import { type User } from "@prisma/client";
+import { EmailInput } from "@/app/ui/EmailInput";
 import { buttonStyles } from "@/app/styles/button";
 import { inputStyles } from "@/app/styles/input";
 import { createUser } from "../actions";
-import { twMerge } from "tailwind-merge";
-import EmailInput from "./EmailInput";
 
 interface Props {
   allUsers: User[];
